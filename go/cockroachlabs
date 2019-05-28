@@ -1,0 +1,27 @@
+cockroach start --insecure --store=json-test --listen-addr=localhost:26257 --http-addr=localhost:8080
+
+sudo cockroach user set maxroach --insecure --host=localhost:26257
+
+sudo cockroach sql --insecure --host=localhost:26257
+
+
+CREATE DATABASE truora_test;
+
+SET DATABASE = truora_test;
+
+GRANT ALL ON DATABASE truora_test TO maxroach;
+
+CREATE TABLE queries (
+ "id" UUID DEFAULT uuid_v4()::UUID PRIMARY KEY,
+ "url" STRING(250),
+ "dataServer" JSONB
+ );
+
+CREATE TABLE "tbl_queries" (
+    "querie_id" SERIAL,
+    "url" STRING(100),
+    "info" JSONB,
+    PRIMARY KEY ("querie_id")
+);
+
+INSERT INTO tbl_queries (url) VALUES ('Irshad');
