@@ -15,7 +15,7 @@ import (
 )
 
 func SearchInformation(search Search) string{
-	// creo la petision
+	// creo la peticion
 	client := &http.Client{}
 	req, err := http.NewRequest("GET", fmt.Sprintf("https://api.ssllabs.com/api/v3/analyze?host=%s",search.Url), nil)
 
@@ -27,7 +27,7 @@ func SearchInformation(search Search) string{
 	}
 	defer resp.Body.Close()
 	body, _ := ioutil.ReadAll(resp.Body)
-	// optendo la informacion de la petision
+	// optendo la informacion de la peticion
  	var data data.Data;
 	errorjson := json.Unmarshal([]byte(string(body)), &data)
 	if(errorjson != nil){

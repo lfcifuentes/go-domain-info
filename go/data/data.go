@@ -10,6 +10,7 @@ import (
 type App struct {
 	Items[] DataSearch
 }
+
 type DataSearch struct{
 	Url string
 	Servers[] Server `json:"endpoints"`
@@ -20,6 +21,7 @@ type DataSearch struct{
 	Title string
 	IsDown bool
 }
+
 type Data struct{
 	Servers[] Server `json:"endpoints"`
 	ServersChange bool
